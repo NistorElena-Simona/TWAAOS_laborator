@@ -3,6 +3,7 @@
 
 import sqlite3
 import jwt
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from typing import Optional
@@ -332,3 +333,7 @@ def sterge_sarcina(
     db.execute("DELETE FROM sarcini WHERE id = ?", (sarcina_id,))
     db.commit()
     return {"mesaj": f"Sarcina cu ID-ul {sarcina_id} a fost ștearsă."}
+
+
+# Trebuie sa fie ULTIMUL apel - prinde toate rutele nerezolvate de endpoint-uri
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
