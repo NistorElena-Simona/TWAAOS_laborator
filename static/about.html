@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Simona</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Modern CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<!-- Glassmorphism Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-gradient shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+            <span class="d-flex align-items-center">
+                <i data-lucide="check-circle-2" class="me-2 text-primary" style="stroke: url(#brand-grad); stroke-width: 2.5px;"></i>
+                <span>Gestionar de Sarcini</span>
+            </span>
+        </a>
+        <!-- Custom SVG gradient definition for Lucide brand icon -->
+        <svg width="0" height="0">
+            <defs>
+                <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4f46e5" />
+                    <stop offset="100%" stop-color="#0ea5e9" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <div class="navbar-nav ms-auto gap-lg-2 mt-2 mt-lg-0">
+                <a class="nav-link d-inline-flex align-items-center gap-1" href="index.html">
+                    <i data-lucide="home" style="width:16px; height:16px;"></i> Acasă
+                </a>
+                <a class="nav-link active d-inline-flex align-items-center gap-1" href="about.html">
+                    <i data-lucide="user" style="width:16px; height:16px;"></i> About Me
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <!-- Main Profile Card -->
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+                
+                <!-- Glowing Hero Profile Background -->
+                <div class="about-hero text-white p-5 text-center">
+                    <div class="avatar-wrapper">
+                        <span class="avatar-letter">S</span>
+                    </div>
+                    <h1 class="fw-extrabold mb-1" style="font-family: var(--font-heading) text-blue-custom "> Nistor (Poliec) Elena-Simona</h1>
+                    <p class="mb-2 opacity-90 fw-semibold text-blue-custom">
+                        Studentă anul I • Securitate Cibernetică
+                    </p>
+                    <p class="mb-3 opacity-90 fw-semibold">
+                        Studentă • Dezvoltare Web • FastAPI & Bootstrap
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap">
+                        <span class="badge bg-white bg-opacity-20 text-white px-3 py-2 rounded-pill font-heading small d-flex align-items-center gap-1">
+                            <i data-lucide="code-2" style="width: 14px; height: 14px;"></i> Frontend Developer
+                        </span>
+                        <span class="badge bg-white bg-opacity-20 text-white px-3 py-2 rounded-pill font-heading small d-flex align-items-center gap-1">
+                            <i data-lucide="terminal" style="width: 14px; height: 14px;"></i> Backend Enthusiast
+                        </span>
+                    </div>
+                </div>
+                <!-- Detailed Project & Info Card Body -->
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="fw-bold mb-3 text-dark d-flex align-items-center gap-2">
+                        <i data-lucide="rocket" class="text-primary" style="width: 24px; height: 24px;"></i> Despre Proiect
+                    </h3>
+                    <p class="text-muted mb-3" style="line-height: 1.6; font-size: 1.05rem;">
+                        Această aplicație reprezintă un <strong>sistem modern și robust</strong> pentru gestionarea sarcinilor zilnice. 
+                        A fost concepută ca un proiect complet care îmbină viteza extraordinară a unui backend Python cu flexibilitatea și frumusețea unei interfețe responsive.
+                    </p>
+                    <p class="text-muted mb-4" style="line-height: 1.6;">
+                        Utilizatorii se pot înregistra securizat, se pot conecta cu datele lor, pot adăuga și edita sarcini în timp real, le pot filtra local în mod instantaneu, le pot marca drept finalizate cu micro-animații elegante și le pot șterge atunci când nu mai sunt necesare.
+                    </p>
+                    <div class="p-4 rounded-4 bg-light mb-5 border border-slate-100" style="border: 1px solid rgba(226, 232, 240, 0.8) !important;">
+                        <h5 class="fw-bold mb-3 text-dark d-flex align-items-center gap-1">
+                            <i data-lucide="shield-check" class="text-success" style="width: 18px; height: 18px;"></i> Caracteristici Cheie
+                        </h5>
+                        <ul class="list-unstyled row g-2 mb-0">
+                            <li class="col-md-6 d-flex align-items-center gap-2 text-muted">
+                                <i data-lucide="check-circle" class="text-success" style="width: 16px; height: 16px; min-width: 16px;"></i> Înregistrare & Logare securizată
+                            </li>
+                            <li class="col-md-6 d-flex align-items-center gap-2 text-muted">
+                                <i data-lucide="check-circle" class="text-success" style="width: 16px; height: 16px; min-width: 16px;"></i> Management complet al sarcinilor (CRUD)
+                            </li>
+                            <li class="col-md-6 d-flex align-items-center gap-2 text-muted">
+                                <i data-lucide="check-circle" class="text-success" style="width: 16px; height: 16px; min-width: 16px;"></i> Căutare și filtrare locală ultra-rapidă
+                            </li>
+                            <li class="col-md-6 d-flex align-items-center gap-2 text-muted">
+                                <i data-lucide="check-circle" class="text-success" style="width: 16px; height: 16px; min-width: 16px;"></i> Design Glassmorphic adaptiv pe orice dispozitiv
+                            </li>
+                        </ul>
+                    </div>
+                    <h4 class="fw-bold mb-4 text-center text-dark">Arhitectura Tehnologică</h4>
+                    <!-- 3-Column Technology Stack Grid -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="tech-card">
+                                <div class="tech-icon mx-auto">
+                                    <i data-lucide="zap" style="width: 24px; height: 24px;"></i>
+                                </div>
+                                <h4>FastAPI</h4>
+                                <p>Un framework web modern pentru Python, renumit pentru performanța extrem de ridicată și documentarea automată.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="tech-card">
+                                <div class="tech-icon mx-auto">
+                                    <i data-lucide="palette" style="width: 24px; height: 24px;"></i>
+                                </div>
+                                <h4>Bootstrap 5</h4>
+                                <p>Cea mai populară bibliotecă CSS pentru crearea de interfețe responsive, curate, mobile-friendly și extrem de elegante.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="tech-card">
+                                <div class="tech-icon mx-auto">
+                                    <i data-lucide="key-round" style="width: 24px; height: 24px;"></i>
+                                </div>
+                                <h4>JWT Auth</h4>
+                                <p>Autentificare securizată prin JSON Web Tokens transmise criptat, asigurând protecția totală a datelor utilizatorului.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="index.html" class="btn btn-primary d-inline-flex align-items-center gap-2 py-3 px-4 shadow">
+                            <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Înapoi la Tabloul de Bord
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", function() {
+        lucide.createIcons();
+    });
+</script>
+</body>
+</html>

@@ -8,13 +8,37 @@
 </head>
 <body class="bg-light">
 
-<nav class="navbar navbar-dark navbar-gradient shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-gradient shadow-sm">
     <div class="container">
-        <span class="navbar-brand fw-bold fs-5">Gestionar de sarcini</span>
-        <div id="info-utilizator" class="d-none align-items-center gap-3">
-            <span id="email-utilizator" class="text-white small"></span>
-            <span id="contor-sarcini" class="badge bg-white text-primary small"></span>
-            <button class="btn btn-outline-light btn-sm" onclick="deconecteaza()">Deconectare</button>
+        <a class="navbar-brand fw-bold" href="index.html">
+            ✅ Gestionar de Sarcini
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Acasă</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Me</a>
+                </li>
+
+                <li class="nav-item">
+                    <div id="info-utilizator" class="d-none d-flex align-items-center gap-3 ms-lg-3">
+                        <span id="email-utilizator" class="text-white small"></span>
+                        <span id="contor-sarcini" class="badge bg-white text-primary small"></span>
+
+                        <button class="btn btn-outline-light btn-sm" onclick="deconecteaza()">
+                            Deconectare
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -42,8 +66,8 @@
                 <div class="card shadow-sm rounded-4 border-0 overflow-hidden">
                     <div class="card-header bg-white border-bottom-0 py-3">
                         <div class="d-flex gap-2">
-                            <button id="tab-inregistrare" class="btn btn-lg rounded-pill flex-fill btn-primary active" onclick="selecteazaTab('inregistrare')">Înregistrare</button>
-                            <button id="tab-autentificare" class="btn btn-lg rounded-pill flex-fill btn-outline-primary" onclick="selecteazaTab('autentificare')">Autentificare</button>
+                            <button id="tab-inregistrare" class="btn btn-lg rounded-pill flex-fill auth-tab active" onclick="selecteazaTab('inregistrare')">Înregistrare</button>
+                            <button id="tab-autentificare" class="btn btn-lg rounded-pill flex-fill auth-tab" onclick="selecteazaTab('autentificare')">Autentificare</button>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -363,7 +387,14 @@
         document.getElementById("contor-sarcini").textContent = `${total} sarcini / ${finalizate} finalizate`;
 
         if (sarcini.length === 0) {
-            container.innerHTML = `<div class="col-12"><div class="alert alert-info mb-0">Nicio sarcină adăugată încă.</div></div>`;
+            container.innerHTML = `<div class="col-12">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body empty-state">
+            <h4>📋 Nu există sarcini</h4>
+            <p>Adaugă primul task pentru a începe organizarea activităților.</p>
+        </div>
+    </div>
+</div>`;
             return;
         }
 
@@ -374,7 +405,7 @@
                         <div>
                             <div class="d-flex align-items-start justify-content-between gap-3">
                                 <div>
-                                    <h6 class="mb-2 fw-semibold">${escapeHtml(s.titlu)}</h6>
+                                    <h6 class="mb-2 fw-bold text-dark">${escapeHtml(s.titlu)}</h6>
                                     <span class="badge ${s.finalizata ? 'bg-success' : 'bg-secondary'} badge-status">${s.finalizata ? 'Finalizată' : 'În progres'}</span>
                                 </div>
                                 <div class="text-end text-muted small">ID ${s.id}</div>
@@ -383,7 +414,10 @@
                         </div>
                         <div class="d-flex flex-wrap gap-2">
                             <button class="btn btn-sm btn-outline-success" onclick="finalizeazaSarcina(${s.id})" ${s.finalizata ? 'disabled' : ''}>Finalizează</button>
-                            <button class="btn btn-sm btn-outline-primary" onclick="editeazaSarcina(${s.id}, '${escapeHtml(s.titlu)}', '${escapeHtml(s.descriere || '')}')">Editează</button>
+                            <button class="btn btn-sm btn-outline-primary"
+                                onclick="editeazaSarcina(${s.id}, '${escapeHtml(s.titlu)}', '${escapeHtml(s.descriere || '')}', ${s.finalizata})">
+                                    Editează
+                                        </button>
                             <button class="btn btn-sm btn-outline-danger" onclick="stergeSarcina(${s.id})">Șterge</button>
                         </div>
                     </div>
@@ -433,18 +467,53 @@
     }
 
     async function finalizeazaSarcina(id) {
-        if (!confirm("Ești sigur că vrei să ștergi această sarcină?")) return;
+        // if (!confirm("Ești sigur că vrei să ștergi această sarcină?")) return;
 
-        const token = obtineToken();
-        try {
-            const raspuns = await fetch(`${API}/sarcini/${id}/finalizeaza`, {
-                method: "PATCH",
-                headers: { "Authorization": `Bearer ${token}` }
-            });
-            if (raspuns.ok) incarcaSarcini();
-        } catch {
-            alert("Nu se poate contacta serverul. Verificați că uvicorn rulează.");
+        // const token = obtineToken();
+        // try {
+        //     const raspuns = await fetch(`${API}/sarcini/${id}/finalizeaza`, {
+        //         method: "PATCH",
+        //         headers: { "Authorization": `Bearer ${token}` }
+        //     });
+        //     if (raspuns.ok) incarcaSarcini();
+        // } catch {
+        //     alert("Nu se poate contacta serverul. Verificați că uvicorn rulează.");
+        // }
+        if (!confirm("Finalizezi această sarcină?")) {
+        return;
+    }
+
+    const token = obtineToken();
+
+    try {
+
+        const raspuns = await fetch(`${API}/sarcini/${id}/finalizeaza`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (raspuns.ok) {
+
+            const card = document.querySelector(`[data-id="${id}"]`);
+
+            if (card) {
+
+                card.classList.add("opacity-50");
+
+                setTimeout(() => {
+                    incarcaSarcini();
+                }, 300);
+            }
+
         }
+
+    } catch {
+
+        alert("Nu se poate contacta serverul.");
+
+    }
     }
 
     async function stergeSarcina(id) {
@@ -463,34 +532,60 @@
         
     }
 
-    async function editeazaSarcina(id, titluCurent, descriereCurenta) {
-    const container = document.getElementById("lista-sarcini");
+    async function editeazaSarcina(id, titluCurent, descriereCurenta, finalizataCurenta) {
+    const card = document.querySelector(`[data-id="${id}"]`);
+    if (!card) return;
 
-    // găsim cardul și îl înlocuim (simplificat: re-randăm doar unul)
-    const carduri = container.children;
+    card.innerHTML = `
+        <div class="card-body d-flex flex-column gap-3">
 
-    for (let card of carduri) {
-        // if (card.innerHTML.includes(`(${id})`) || card.innerHTML.includes(`editeazaSarcina(${id}`)) {
-        if (card.dataset.id == id) {
-            card.innerHTML = `
-                <div class="card-body">
-                    <input type="text" id="edit-titlu-${id}" class="form-control mb-2"
-                        value="${titluCurent}">
-                    <textarea id="edit-desc-${id}" class="form-control mb-2">${descriereCurenta}</textarea>
-                    <button class="btn btn-success btn-sm"
-                        onclick="salveazaEditare(${id})">Salvează</button>
-                    <button class="btn btn-secondary btn-sm"
-                        onclick="incarcaSarcini()">Anulează</button>
-                </div>
-            `;
-        }
-    }
+            <div>
+                <label class="form-label fw-semibold">Titlu</label>
+                <input
+                    type="text"
+                    id="edit-titlu-${id}"
+                    class="form-control"
+                    value="${titluCurent}">
+            </div>
+
+            <div>
+                <label class="form-label fw-semibold">Descriere</label>
+                <textarea
+                    id="edit-desc-${id}"
+                    class="form-control"
+                    rows="3">${descriereCurenta}</textarea>
+            </div>
+
+            <div>
+                <label class="form-label fw-semibold">Status</label>
+                <select id="edit-status-${id}" class="form-select">
+                    <option value="false" ${!finalizataCurenta ? "selected" : ""}>
+                        În progres
+                    </option>
+                    <option value="true" ${finalizataCurenta ? "selected" : ""}>
+                        Finalizată
+                    </option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-success" onclick="salveazaEditare(${id})">
+                    Salvează
+                </button>
+
+                <button class="btn btn-secondary" onclick="incarcaSarcini()">
+                    Anulează
+                </button>
+            </div>
+
+        </div>
+    `;
 }
-
-
 async function salveazaEditare(id) {
     const titlu = document.getElementById(`edit-titlu-${id}`).value;
     const descriere = document.getElementById(`edit-desc-${id}`).value;
+    const finalizata = document.getElementById(`edit-status-${id}`).value === "true";
+
     const token = obtineToken();
 
     try {
@@ -500,7 +595,11 @@ async function salveazaEditare(id) {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify({ titlu, descriere })
+            body: JSON.stringify({
+                titlu,
+                descriere,
+                finalizata
+            })
         });
 
         if (raspuns.ok) {
