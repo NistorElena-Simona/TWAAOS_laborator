@@ -12,3 +12,12 @@ __pycache__/
 # Mediul virtual
 venv/
 .venv
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Test / tooling cache
+.pytest_cache/
+.cache/
