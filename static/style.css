@@ -1,0 +1,78 @@
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #dbeafe 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #e0e7ff 0%, transparent 35%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.navbar-gradient {
+    background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+}
+
+.card {
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.task-card:hover {
+    box-shadow: 0 25px 50px rgba(15, 23, 42, 0.08);
+}
+
+.btn {
+    border-radius: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.form-control {
+    border-radius: 1rem;
+    border: 1px solid #dbe4f0;
+    padding: 0.9rem 1rem;
+}
+
+.form-control:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.15);
+}
+
+.badge-status {
+    font-size: 0.75rem;
+}
+
+.empty-state {
+    padding: 3rem;
+    text-align: center;
+    color: #64748b;
+}
+.auth-tab {
+    transition: all 0.25s ease;
+    font-weight: 600;
+}
+
+.auth-tab.active {
+    background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+    color: white !important;
+    border: none;
+}
+
+.auth-tab:not(.active) {
+    background: #f8fafc;
+    color: #475569 !important;
+    border: 1px solid #cbd5e1;
+}
+
+.auth-tab:hover {
+    transform: translateY(-1px);
+}
+.opacity-50 {
+    transition: all 0.3s ease;
+    transform: scale(0.98);
+}
