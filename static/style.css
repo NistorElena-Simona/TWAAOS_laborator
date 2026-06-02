@@ -86,3 +86,6 @@ body {
 .text-blue-custom {
     color: #0ea5e9 !important;
 }
+.text-blue-600 { color: #0ea5e9 !important; }
+.text-blue-400 { color: #7dd3fc !important; }
+.text-black-300 { color: #1f2937 !important; }
